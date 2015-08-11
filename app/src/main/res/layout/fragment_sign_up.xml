@@ -1,0 +1,76 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.indcoders.pcbuilder.LoginFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="center|top"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/etMailSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:ems="10"
+            android:focusable="true"
+            android:hint="E-Mail ID"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/my_awesome_color" />
+
+        <EditText
+            android:id="@+id/etUsernameSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:ems="10"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:textColor="@color/my_awesome_color" />
+
+        <EditText
+            android:id="@+id/etPassSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:ems="10"
+            android:hint="password"
+            android:inputType="textPassword"
+            android:textColor="@color/my_awesome_color" />
+
+        <EditText
+            android:id="@+id/etConfirmSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:ems="10"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:textColor="@color/my_awesome_color" />
+
+        <CheckBox
+            android:id="@+id/checkTerms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="I agree to Terms &amp; Conditions" />
+
+        <Button
+            android:id="@+id/bSignUpDo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@color/my_awesome_color"
+            android:text="Sign Up"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -32,6 +32,7 @@ public class BuildActivity extends ActionBarActivity implements ActionBar.TabLis
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+    String[] components = {"Processor", "Motherboard", "Graphics Card", "RAM", "Power Supply", "SSD", "HDD", "Monitor"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,9 @@ public class BuildActivity extends ActionBarActivity implements ActionBar.TabLis
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -164,21 +168,13 @@ public class BuildActivity extends ActionBarActivity implements ActionBar.TabLis
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 19;
+            return 8;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             Locale l = Locale.getDefault();
-            switch (position) {
-                case 0:
-                    return getString(R.string.title_section1).toUpperCase(l);
-                case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
-                case 2:
-                    return getString(R.string.title_section3).toUpperCase(l);
-            }
-            return null;
+            return components[position];
         }
     }
 

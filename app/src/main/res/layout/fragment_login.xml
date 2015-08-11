@@ -1,0 +1,71 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.indcoders.pcbuilder.LoginFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="center|top"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/etMailLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:ems="10"
+            android:focusable="true"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:textColor="@color/my_awesome_color" />
+
+        <EditText
+            android:id="@+id/etPassLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:ems="10"
+            android:hint="password"
+            android:inputType="textPassword"
+            android:textColor="@color/my_awesome_color" />
+
+        <Button
+            android:id="@+id/bForgot"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_margin="5dp"
+            android:background="@android:color/transparent"
+            android:gravity="left"
+            android:padding="5dp"
+            android:text="Forgot Password !"
+            android:textColor="@color/my_awesome_color" />
+
+        <Button
+            android:id="@+id/bLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@color/my_awesome_color"
+            android:text="Sign In"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/bSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@android:color/transparent"
+            android:padding="5dp"
+            android:text="Not a member ?  Sign Up!"
+            android:textColor="@color/my_awesome_color" />
+    </LinearLayout>
+
+</FrameLayout>
