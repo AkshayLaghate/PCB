@@ -4,27 +4,23 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 
-import com.parse.LogInCallback;
-import com.parse.ParseException;
-import com.parse.ParseUser;
+import com.astuetz.PagerSlidingTabStrip;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link LoginFragment.OnFragmentInteractionListener} interface
+ * {@link PopularFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link LoginFragment#newInstance} factory method to
+ * Use the {@link PopularFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LoginFragment extends Fragment {
+public class PopularFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -36,7 +32,7 @@ public class LoginFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public LoginFragment() {
+    public PopularFragment() {
         // Required empty public constructor
     }
 
@@ -46,11 +42,11 @@ public class LoginFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LoginFragment.
+     * @return A new instance of fragment PopularFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static LoginFragment newInstance(String param1, String param2) {
-        LoginFragment fragment = new LoginFragment();
+    public static PopularFragment newInstance(String param1, String param2) {
+        PopularFragment fragment = new PopularFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -71,55 +67,23 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View rootView = inflater.inflate(R.layout.fragment_popular, container, false);
 
-        View v = inflater.inflate(R.layout.fragment_login, container, false);
+        ViewPager pager = (ViewPager) rootView.findViewById(R.id.viewPager);
+        pager.setAdapter(new PopularAdapter(getChildFragmentManager()));
 
-        final EditText etMail = (EditText) v.findViewById(R.id.etMailLogin);
-        final EditText etPass = (EditText) v.findViewById(R.id.etPassLogin);
-
-        Button bForgot = (Button) v.findViewById(R.id.bForgot);
-        final Button bLogin = (Button) v.findViewById(R.id.bLogin);
-
-        bLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                etMail.clearFocus();
-                etPass.clearFocus();
-                bLogin.requestFocus();
-                ParseUser.logInInBackground(etMail.getText().toString(), etPass.getText().toString(), new LogInCallback() {
-                    public void done(ParseUser user, ParseException e) {
-                        if (user != null) {
-                            // Hooray! The user is logged in.
-                            Log.e("Parse Login", "Successful");
-                            ProfileFragment nextFrag = new ProfileFragment();
-                            getActivity().getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.container, nextFrag)
-                                    .addToBackStack(null)
-                                    .commit();
-
-                        } else {
-                            // Signup failed. Look at the ParseException to see what happened.
-                            Log.e("Parse Login", e.toString());
-                        }
-                    }
-                });
-            }
-        });
-
-        Button bSignUp = (Button) v.findViewById(R.id.bSignUp);
-        bSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SignUpFragment nextFrag = new SignUpFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, nextFrag)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
-        return v;
+        // Bind the tabs to the ViewPager
+        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) rootView.findViewById(R.id.tabs);
+        tabs.setIndicatorColorResource(R.color.my_awesome_color);
+        tabs.setIndicatorHeight(7);
+        tabs.setDividerColor(getResources().getColor(R.color.grey_600));
+        tabs.setTextColor(getResources().getColor(R.color.grey_white_1000));
+        tabs.setShouldExpand(true);
+        tabs.setBackgroundColor(getResources().getColor(R.color.grey_900));
+        tabs.setViewPager(pager);
+        return rootView;
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

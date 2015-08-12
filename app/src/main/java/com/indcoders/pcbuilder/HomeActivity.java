@@ -1,6 +1,5 @@
 package com.indcoders.pcbuilder;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,16 +8,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.parse.Parse;
+import com.parse.ParseFacebookUtils;
 
 public class HomeActivity extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks, LoginFragment.OnFragmentInteractionListener, SignUpFragment.OnFragmentInteractionListener, ProfileFragment.OnFragmentInteractionListener {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, LoginFragment.OnFragmentInteractionListener, SignUpFragment.OnFragmentInteractionListener, ProfileFragment.OnFragmentInteractionListener
+        , PopularFragment.OnFragmentInteractionListener, RigsListFragment.OnFragmentInteractionListener, BuilderFragment.OnFragmentInteractionListener,
+        CompListFragment.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -37,6 +36,7 @@ public class HomeActivity extends ActionBarActivity
 
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "lopZYTYSuckw8n699haDAEfkc4cefTAPiofMqTdb", "jRGMkFdQBTLSvaSO6Ljf6E23XFecsgIH4sFFSD7m");
+        ParseFacebookUtils.initialize(this);
 
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
@@ -59,10 +59,13 @@ public class HomeActivity extends ActionBarActivity
                 fragment = ProfileFragment.newInstance(null, null);
                 break;
             case 1:
+                fragment = BuilderFragment.newInstance(null, null);
                 break;
             case 2:
-                startActivity(new Intent(this, BuildActivity.class));
-                return;
+
+            case 3:
+                fragment = PopularFragment.newInstance(null, null);
+                break;
         }
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
@@ -124,44 +127,11 @@ public class HomeActivity extends ActionBarActivity
 
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-            return rootView;
-        }
-
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            ((HomeActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
-        }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
     }
+
 
 }

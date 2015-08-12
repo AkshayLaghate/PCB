@@ -4,27 +4,20 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-
-import com.parse.LogInCallback;
-import com.parse.ParseException;
-import com.parse.ParseUser;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link LoginFragment.OnFragmentInteractionListener} interface
+ * {@link RigsListFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link LoginFragment#newInstance} factory method to
+ * Use the {@link RigsListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LoginFragment extends Fragment {
+public class RigsListFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -36,7 +29,7 @@ public class LoginFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public LoginFragment() {
+    public RigsListFragment() {
         // Required empty public constructor
     }
 
@@ -46,11 +39,11 @@ public class LoginFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LoginFragment.
+     * @return A new instance of fragment RigsListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static LoginFragment newInstance(String param1, String param2) {
-        LoginFragment fragment = new LoginFragment();
+    public static RigsListFragment newInstance(String param1, String param2) {
+        RigsListFragment fragment = new RigsListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -71,54 +64,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        View v = inflater.inflate(R.layout.fragment_login, container, false);
-
-        final EditText etMail = (EditText) v.findViewById(R.id.etMailLogin);
-        final EditText etPass = (EditText) v.findViewById(R.id.etPassLogin);
-
-        Button bForgot = (Button) v.findViewById(R.id.bForgot);
-        final Button bLogin = (Button) v.findViewById(R.id.bLogin);
-
-        bLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                etMail.clearFocus();
-                etPass.clearFocus();
-                bLogin.requestFocus();
-                ParseUser.logInInBackground(etMail.getText().toString(), etPass.getText().toString(), new LogInCallback() {
-                    public void done(ParseUser user, ParseException e) {
-                        if (user != null) {
-                            // Hooray! The user is logged in.
-                            Log.e("Parse Login", "Successful");
-                            ProfileFragment nextFrag = new ProfileFragment();
-                            getActivity().getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.container, nextFrag)
-                                    .addToBackStack(null)
-                                    .commit();
-
-                        } else {
-                            // Signup failed. Look at the ParseException to see what happened.
-                            Log.e("Parse Login", e.toString());
-                        }
-                    }
-                });
-            }
-        });
-
-        Button bSignUp = (Button) v.findViewById(R.id.bSignUp);
-        bSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SignUpFragment nextFrag = new SignUpFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, nextFrag)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
-        return v;
+        return inflater.inflate(R.layout.fragment_rigs_list, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

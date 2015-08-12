@@ -21,7 +21,7 @@
             android:layout_margin="5dp"
             android:ems="10"
             android:focusable="true"
-            android:hint="E-Mail ID"
+            android:hint="Email ID"
             android:inputType="textEmailAddress"
             android:textColor="@color/my_awesome_color" />
 
