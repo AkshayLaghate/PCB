@@ -1,7 +1,9 @@
-package com.indcoders.pcbuilder;
+package com.indcoders.pcbuilder.Utils;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.indcoders.pcbuilder.Fragments.CompListFragment;
 
 /**
  * Created by Akki on 12/08/15.
@@ -27,4 +29,5 @@ public class BuliderAdapter extends FragmentPagerAdapter {
     public android.support.v4.app.Fragment getItem(int position) {
         return CompListFragment.newInstance(null, null);
     }
+
 }

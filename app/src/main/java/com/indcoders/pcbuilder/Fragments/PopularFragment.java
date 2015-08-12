@@ -1,4 +1,4 @@
-package com.indcoders.pcbuilder;
+package com.indcoders.pcbuilder.Fragments;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.indcoders.pcbuilder.R;
+import com.indcoders.pcbuilder.Utils.PopularAdapter;
 
 
 /**

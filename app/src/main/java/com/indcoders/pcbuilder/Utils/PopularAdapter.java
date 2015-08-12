@@ -1,7 +1,9 @@
-package com.indcoders.pcbuilder;
+package com.indcoders.pcbuilder.Utils;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.indcoders.pcbuilder.Fragments.RigsListFragment;
 
 /**
  * Created by Akki on 12/08/15.

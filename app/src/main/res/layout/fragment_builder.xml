@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.indcoders.pcbuilder.PopularFragment">
+    tools:context="com.indcoders.pcbuilder.Fragments.PopularFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <com.astuetz.PagerSlidingTabStrip
@@ -11,8 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="48dip" />
 
+
     <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/viewPager"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
+
+
 </LinearLayout>

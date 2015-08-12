@@ -8,11 +8,23 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.indcoders.pcbuilder.Fragments.BuilderFragment;
+import com.indcoders.pcbuilder.Fragments.CompListFragment;
+import com.indcoders.pcbuilder.Fragments.LoginFragment;
+import com.indcoders.pcbuilder.Fragments.NavigationDrawerFragment;
+import com.indcoders.pcbuilder.Fragments.PopularFragment;
+import com.indcoders.pcbuilder.Fragments.ProfileFragment;
+import com.indcoders.pcbuilder.Fragments.RigsListFragment;
+import com.indcoders.pcbuilder.Fragments.SignUpFragment;
+import com.indcoders.pcbuilder.Utils.DBHelper;
 import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
+
+import java.io.IOException;
 
 public class HomeActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks, LoginFragment.OnFragmentInteractionListener, SignUpFragment.OnFragmentInteractionListener, ProfileFragment.OnFragmentInteractionListener
@@ -39,6 +51,13 @@ public class HomeActivity extends ActionBarActivity
         ParseFacebookUtils.initialize(this);
 
 
+        DBHelper dbHelper = new DBHelper(this);
+        try {
+            dbHelper.createDataBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("DBError", e.toString());
+        }
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();

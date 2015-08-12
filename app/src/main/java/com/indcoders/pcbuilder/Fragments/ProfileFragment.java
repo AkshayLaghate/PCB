@@ -1,4 +1,4 @@
-package com.indcoders.pcbuilder;
+package com.indcoders.pcbuilder.Fragments;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.indcoders.pcbuilder.R;
 import com.parse.ParseUser;
 
 

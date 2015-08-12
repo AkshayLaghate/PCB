@@ -1,4 +1,4 @@
-package com.indcoders.pcbuilder;
+package com.indcoders.pcbuilder.Fragments;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.indcoders.pcbuilder.R;
 
 
 /**

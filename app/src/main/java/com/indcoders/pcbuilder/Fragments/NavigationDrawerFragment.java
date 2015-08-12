@@ -1,4 +1,4 @@
-package com.indcoders.pcbuilder;
+package com.indcoders.pcbuilder.Fragments;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -21,6 +21,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.indcoders.pcbuilder.R;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.

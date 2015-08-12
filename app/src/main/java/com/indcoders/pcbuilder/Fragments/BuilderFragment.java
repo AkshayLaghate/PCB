@@ -1,35 +1,39 @@
-package com.indcoders.pcbuilder;
+package com.indcoders.pcbuilder.Fragments;
 
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.astuetz.PagerSlidingTabStrip;
+import com.indcoders.pcbuilder.R;
+import com.indcoders.pcbuilder.Utils.BuliderAdapter;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CompListFragment.OnFragmentInteractionListener} interface
+ * {@link BuilderFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CompListFragment#newInstance} factory method to
+ * Use the {@link BuilderFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CompListFragment extends Fragment {
+public class BuilderFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    ViewPager pager;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     private OnFragmentInteractionListener mListener;
 
-    public CompListFragment() {
+    public BuilderFragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +43,11 @@ public class CompListFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CompListFragment.
+     * @return A new instance of fragment BuilderFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CompListFragment newInstance(String param1, String param2) {
-        CompListFragment fragment = new CompListFragment();
+    public static BuilderFragment newInstance(String param1, String param2) {
+        BuilderFragment fragment = new BuilderFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,12 +64,29 @@ public class CompListFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_comp_list, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_popular, container, false);
+
+        pager = (ViewPager) rootView.findViewById(R.id.viewPager);
+        pager.setAdapter(new BuliderAdapter(getChildFragmentManager()));
+        pager.setOffscreenPageLimit(10);
+
+        // Bind the tabs to the ViewPager
+        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) rootView.findViewById(R.id.tabs);
+        tabs.setIndicatorColorResource(R.color.my_awesome_color);
+        tabs.setIndicatorHeight(7);
+        tabs.setDividerColor(getResources().getColor(R.color.grey_600));
+        tabs.setTextColor(getResources().getColor(R.color.grey_white_1000));
+        tabs.setShouldExpand(true);
+        tabs.setBackgroundColor(getResources().getColor(R.color.grey_900));
+        tabs.setViewPager(pager);
+        return rootView;
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
