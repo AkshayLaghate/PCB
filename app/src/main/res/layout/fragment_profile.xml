@@ -35,24 +35,43 @@
                 android:gravity="center"
                 android:padding="10dp">
 
-                <ImageView
-                    android:id="@+id/imageView"
+                <FrameLayout
+                    android:id="@+id/frame"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/icon_2" />
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/ivFrameBG"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+
+                        android:layout_gravity="center"
+                        android:alpha="155"
+                        android:background="@drawable/circle" />
+
+                    <TextView
+                        android:id="@+id/tvFrameLetter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="A"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="50dp" />
+                </FrameLayout>
+
 
                 <TextView
                     android:id="@+id/tvUsernameProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/imageView"
+                    android:layout_alignTop="@+id/frame"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_toEndOf="@+id/imageView"
-                    android:layout_toRightOf="@+id/imageView"
+                    android:layout_toEndOf="@+id/frame"
+                    android:layout_toRightOf="@+id/frame"
                     android:text="Username"
                     android:textSize="25sp" />
 

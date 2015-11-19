@@ -1,12 +1,16 @@
 package com.indcoders.pcbuilder.Fragments;
 
 import android.app.Activity;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.indcoders.pcbuilder.R;
@@ -26,11 +30,10 @@ public class ProfileFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    ImageView ivFrameBG;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     private OnFragmentInteractionListener mListener;
 
     public ProfileFragment() {
@@ -87,6 +90,15 @@ public class ProfileFragment extends Fragment {
                     .addToBackStack(null)
                     .commit();
         }
+        int highlightColor = getActivity().getResources().getColor(R.color.accent_color);
+        PorterDuffColorFilter colorFilter = new PorterDuffColorFilter(highlightColor, PorterDuff.Mode.SRC_ATOP);
+
+        Paint redHighLight = new Paint();
+        redHighLight.setColorFilter(colorFilter);
+        redHighLight.setAlpha(190);
+
+        ivFrameBG = (ImageView) v.findViewById(R.id.ivFrameBG);
+        ivFrameBG.setColorFilter(colorFilter);
         return v;
     }
 
